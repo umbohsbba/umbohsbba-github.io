@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html>
+
+<head> <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+         <title>test</title>
+
+          <link href="css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="portStyle.css">
+    
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+
+
+<body>
+<div id="info">
+
+<button class="btn btn-default btn-lg">view projects</button>
+
+
+<script type= "text/javascript">
+var mydiv =$('#info');
+$(document).ready( function() {
+  $("button").click( function(){
+    $.getJSON("https://api.github.com/users/umbohsbba", function(data) {
+      console.log(data);
+      $.getJSON(data.repos_url, function(repoData) {
+        console.log(repoData[2].name);
+        mydiv.append('<div class="newClass">' + repoData[2].name + '</div>');
+        mydiv.append('<div class="newClass">' + repoData[2].html_url + '</div>');
+        for(var i = 0; i<repoData.length; i++) {
+          mydiv.append('<div class="newClass">' + repoData[i].name + '</div>');
+        mydiv.append('<div class="newClass">' + repoData[i].html_url + '</div>');
+console.log(repoData[i].name);
+}
+        });
+       });
+      });
+     });
+    
+    
+         
+
+    
+  
+  </script>
+  </div>
+</body></html>
