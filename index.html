@@ -16,20 +16,44 @@
 
     <!-- Custom Fonts -->
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+   
      <link href="https://fonts.googleapis.com/css?family=Permanent+Marker|Ranga|Righteous|Shadows+Into+Light" rel="stylesheet">
   
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
 
     <!-- Theme CSS -->
     <link href="css/grayscale.css" rel="stylesheet">
-
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <script type= "text/javascript">
+ var=$('#info');
+$(document).ready( function() {
+  $("button").click( function(){
+    $.getJSON("https://api.github.com/users/umbohsbba", function(data) {
+      console.log(data);
+      $.getJSON(data.repos_url, function(repoData) {
+        console.log(repoData[2].name);
+        mydiv.append('<div class="newClass">' + repoData[2].name + '</div>');
+        mydiv.append('<div class="newClass">' + repoData[2].html_url + '</div>');
+        for(var i = 0; i<repoData.length; i++) {
+          mydiv.append('<div class="newClass">' + repoData[i].name + '</div>');
+        mydiv.append('<div class="newClass">' + repoData[i].html_url + '</div>');
+console.log(repoData[i].name);
+}
+        });
+       });
+      });
+     });
+            
+    
+    </script>
+
 
 </head>
 
@@ -109,32 +133,12 @@
                 </div>
              </div>
             </div>
-
+<div class="newClass">
+<a href="">
 </section>   
 
 
-<script type= "text/javascript">
-var mydiv =$('#info');
-$(document).ready( function() {
-  $("button").click( function(){
-    $.getJSON("https://api.github.com/users/umbohsbba", function(data) {
-      console.log(data);
-      $.getJSON(data.repos_url, function(repoData) {
-        console.log(repoData[2].name);
-        mydiv.append('<div class="newClass">' + repoData[2].name + '</div>');
-        mydiv.append('<div class="newClass">' + repoData[2].html_url + '</div>');
-        for(var i = 0; i<repoData.length; i++) {
-          mydiv.append('<div class="newClass">' + repoData[i].name + '</div>');
-        mydiv.append('<div class="newClass">' + repoData[i].html_url + '</div>');
-console.log(repoData[i].name);
-}
-        });
-       });
-      });
-     });
-            
-    
-    </script>
+
 
         
     
@@ -146,7 +150,7 @@ console.log(repoData[i].name);
                 <div class="col-lg-8 col-lg-offset-2">
                     <h2>ABOUT ME</h2>
                     <p>THIS SECTION IS ALL ABOUT ME</p>
-                    <a href="http://startbootstrap.com/template-overviews/grayscale/" class="btn btn-default btn-lg">View Projects</a>
+                   
                 </div>
             </div>
         </div>
@@ -172,8 +176,14 @@ console.log(repoData[i].name);
         </div>
     </section>
 
-    <!-- Map Section -->
-    <div id="map"></div>
+<div class="newClass">
+    <div id="info">
+
+<button class="btn btn-default btn-lg">view projects</button>
+
+</div>
+</div>
+   
 
     <!-- Footer -->
     <footer>
